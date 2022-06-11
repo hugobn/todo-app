@@ -18,10 +18,15 @@ class  Counter extends Component{
     // Using the outfunction (callbackfn) avoid to use the binding in constructor example: /this.increment = this.increment.bind(this)
     //render = () => {
     render () {
+        //const style = {fontSize: "50px"} 
         return(
             <div className="counter">
                 <button onClick={this.increment}>+1</button>
-                <span className="count">{this.state.counter}</span>
+                <span className="count"
+                // The best practice is to have all the css style into the independent css file
+                //style={{fontSize: "50px"}} // We can use css here directly wit this structure
+                //style={style}  // we can also use a variable(var, let, const, etc.) to apply the css style
+                >{this.state.counter}</span>
             </div>
         )
     }
