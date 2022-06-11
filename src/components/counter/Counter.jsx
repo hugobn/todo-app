@@ -15,7 +15,9 @@ class  Counter extends Component{
         this.increment = this.increment.bind(this)
     }
 
-    render(){
+    // Using the outfunction (callbackfn) avoid to use the binding in constructor example: /this.increment = this.increment.bind(this)
+    //render = () => {
+    render () {
         return(
             <div className="counter">
                 <button onClick={this.increment}>+1</button>
@@ -24,7 +26,9 @@ class  Counter extends Component{
         )
     }
 
-    increment(){  // Update the state - counter++
+    // Becuase we changed the render function into a outfunct we need to change the increment func into a outfucnt as well
+    // increment = () => {  // Update the state - counter++
+    increment () {  // Update the state - counter++
         //console.log('increment')
         //this.state.counter++    // BAD Practice
         // Best practice is call SetState method
