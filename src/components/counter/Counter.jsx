@@ -26,9 +26,12 @@ class Counter extends Component{
 
     increment (by) {
         //console.log(`increment from child - ${by}`)
-        this.setState({
-            counter: this.state.counter + by
-        })
+        this.setState(
+            // Best practice is to make an callbackfn for state
+            (prevState) => {
+                return {counter: prevState.counter + by}
+            }
+        )
     }
 }
 
