@@ -21,7 +21,7 @@ class  Counter extends Component{
         //const style = {fontSize: "50px"} 
         return(
             <div className="counter">
-                <button onClick={this.increment}>+1</button>
+                <button onClick={this.increment}>+{this.props.by}</button>
                 <span className="count"
                 // The best practice is to have all the css style into the independent css file
                 //style={{fontSize: "50px"}} // We can use css here directly wit this structure
@@ -38,7 +38,7 @@ class  Counter extends Component{
         //this.state.counter++    // BAD Practice
         // Best practice is call SetState method
         this.setState({
-            counter: this.state.counter + 1
+            counter: this.state.counter + this.props.by
         })
     }
 }
