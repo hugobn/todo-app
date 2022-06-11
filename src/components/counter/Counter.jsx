@@ -3,7 +3,19 @@ import PropTypes from 'prop-types'
 import React, {Component} from "react"
 import './Counter.css'
 
-class  Counter extends Component{
+class Counter extends Component{
+    render(){
+        return(
+          <div className="counter">
+            <CounterButton by={1}/>
+            <CounterButton by={5}/>
+            <CounterButton by={10}/>
+          </div>
+        )
+      }
+}
+
+class  CounterButton extends Component{
 
     //Define the initial state in a constructor
     //state => counter 0
@@ -45,12 +57,12 @@ class  Counter extends Component{
 }
 
 // Define a default value for props
-Counter.defaultProps = {
+CounterButton.defaultProps = {
     by: 1,   // This by default prop value will be taken by the counter without specify the props into it
 }
 
 // Definning this object we show and error message when we pass a String in by props instead of number
-Counter.propTypes = {
+CounterButton.propTypes = {
     by: PropTypes.number
 }
 
