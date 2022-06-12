@@ -1,15 +1,16 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import { Routes } from "react-router-dom/umd/react-router-dom.development";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import withNavigation from "./WithNavigation";
 
 class TodoApp extends Component{
     render(){
+        const LoginComponentWithNavegation = withNavigation(LoginComponent)
         return(
             <div className="TodoApp">
                 <Router>
                     <Routes>
-                        <Route path="/" element={<LoginComponent/>}/>
-                        <Route path="/login" element={<LoginComponent/>}/>
+                        <Route path="/" element={<LoginComponentWithNavegation/>}/>
+                        <Route path="/login" element={<LoginComponentWithNavegation/>}/>
                         <Route path="/welcome" element={<WelcomeComponent/>}/>
                     </Routes>
                 </Router>
@@ -76,9 +77,9 @@ class LoginComponent extends Component{
     loginClicked(){
         //in28minutes, dummy
         if(this.state.username==='in28minutes' && this.state.password==='dummy'){
-            console.log("Sucessful")
-            this.setState({showSucessMessage: true})
-            this.setState({hasLoginFailed: false})
+            this.props.navigate('/welcome')
+            //this.setState({showSucessMessage: true})
+            //this.setState({hasLoginFailed: false})
         }else{
             console.log("Failed")
             this.setState({showSucessMessage: false})
@@ -116,8 +117,5 @@ function ShowLoginSucessMessage(props){
     return null
 }
 */
-
-
-
 
 export default TodoApp
