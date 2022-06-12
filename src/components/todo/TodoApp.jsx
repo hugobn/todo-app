@@ -8,7 +8,7 @@ class TodoApp extends Component{
             <div className="TodoApp">
                 <Router>
                     <Routes>
-                        <Route path="/"  exact element={<LoginComponent/>}/>
+                        <Route path="/" element={<LoginComponent/>}/>
                         <Route path="/login" element={<LoginComponent/>}/>
                         <Route path="/welcome" element={<WelcomeComponent/>}/>
                     </Routes>
