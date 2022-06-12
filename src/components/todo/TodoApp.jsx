@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, Switch} from 'react-router-dom'
 import withNavigation from "./WithNavigation";
 
 class TodoApp extends Component{
@@ -9,9 +9,10 @@ class TodoApp extends Component{
             <div className="TodoApp">
                 <Router>
                     <Routes>
-                        <Route path="/" element={<LoginComponentWithNavegation/>}/>
+                        <Route path="/" exact element={<LoginComponentWithNavegation/>}/>
                         <Route path="/login" element={<LoginComponentWithNavegation/>}/>
                         <Route path="/welcome" element={<WelcomeComponent/>}/>
+                        <Route path="*" element={<ErrorComponent/>}/>
                     </Routes>
                 </Router>
 
@@ -20,6 +21,10 @@ class TodoApp extends Component{
             </div>
         )
     }
+}
+
+function ErrorComponent(){
+    return <div>An Error Ocurred. I don't know what to do! Contact Support</div>
 }
 
 class WelcomeComponent extends Component{
