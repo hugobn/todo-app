@@ -1,10 +1,31 @@
 import React, {Component} from "react";
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import { Routes } from "react-router-dom/umd/react-router-dom.development";
 
 class TodoApp extends Component{
     render(){
         return(
             <div className="TodoApp">
-                <LoginComponent/>
+                <Router>
+                    <Routes>
+                        <Route path="/"  exact element={<LoginComponent/>}/>
+                        <Route path="/login" element={<LoginComponent/>}/>
+                        <Route path="/welcome" element={<WelcomeComponent/>}/>
+                    </Routes>
+                </Router>
+
+                {/*<LoginComponent/>
+                <WelcomeComponent/>*/}
+            </div>
+        )
+    }
+}
+
+class WelcomeComponent extends Component{
+    render(){
+        return(
+            <div>
+                Welcome Component
             </div>
         )
     }
@@ -95,6 +116,7 @@ function ShowLoginSucessMessage(props){
     return null
 }
 */
+
 
 
 
