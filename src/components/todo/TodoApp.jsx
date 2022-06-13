@@ -10,17 +10,39 @@ class TodoApp extends Component{
         return(
             <div className="TodoApp">
                 <Router>
-                    <Routes>
-                        <Route path="/" exact element={<LoginComponentWithNavegation/>}/>
-                        <Route path="/login" element={<LoginComponentWithNavegation/>}/>
-                        <Route path="/welcome/:name" element={<WelcomeComponentWithParams/>}/>
-                        <Route path="/todos" element={<ListTodosComponent/>}/>
-                        <Route path="*" element={<ErrorComponent/>}/>
-                    </Routes>
+                    <HeaderComponent/>
+                        <Routes>
+                            <Route path="/" exact element={<LoginComponentWithNavegation/>}/>
+                            <Route path="/login" element={<LoginComponentWithNavegation/>}/>
+                            <Route path="/welcome/:name" element={<WelcomeComponentWithParams/>}/>
+                            <Route path="/todos" element={<ListTodosComponent/>}/>
+                            <Route path="*" element={<ErrorComponent/>}/>
+                        </Routes>
+                    <FooterComponent/>
                 </Router>
 
                 {/*<LoginComponent/>
                 <WelcomeComponent/>*/}
+            </div>
+        )
+    }
+}
+
+class HeaderComponent extends Component{
+    render(){
+        return(
+            <div>
+                Header <hr/>
+            </div>
+        )
+    }
+}
+
+class FooterComponent extends Component{
+    render(){
+        return(
+            <div>
+                <hr/>Footer
             </div>
         )
     }
