@@ -14,6 +14,7 @@ class TodoApp extends Component{
                         <Route path="/" exact element={<LoginComponentWithNavegation/>}/>
                         <Route path="/login" element={<LoginComponentWithNavegation/>}/>
                         <Route path="/welcome/:name" element={<WelcomeComponentWithParams/>}/>
+                        <Route path="/todos" element={<ListTodosComponent/>}/>
                         <Route path="*" element={<ErrorComponent/>}/>
                     </Routes>
                 </Router>
@@ -29,12 +30,52 @@ function ErrorComponent(){
     return <div>An Error Ocurred. I don't know what to do! Contact Support</div>
 }
 
-class WelcomeComponent extends Component{
+
+class ListTodosComponent extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            todos:
+                [ 
+                    {id: 1, description: 'Learn to Dance'},
+                    {id: 2, description: 'Become an Expert at React'},
+                    {id: 3, description: 'Visit India'}
+                ]
+        }
+    }
+
     render(){
         return(
             <div>
-                Welcome {this.props.params.name}
+                <h1>List Todos</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            this.state.todos.map (
+                                todo => 
+                                <tr>
+                                    <td>{todo.id}</td>
+                                    <td>{todo.description}</td>
+                                </tr>
+                                )
+                        }
+                    </tbody>
+                </table>
             </div>
+        )
+    }
+}
+
+class WelcomeComponent extends Component{
+    render(){
+        return(
+            <div>Welcome {this.props.params.name}</div>
         )
     }
 }
