@@ -8,10 +8,11 @@ class TodoApp extends Component{
     render(){
         const LoginComponentWithNavegation = withNavigation(LoginComponent)
         const WelcomeComponentWithParams = withParams(WelcomeComponent)
+        const HeaderComponentWithNavigation = withNavigation(HeaderComponent)
         return(
             <div className="TodoApp">
                 <Router>
-                    <HeaderComponent/>
+                    <HeaderComponentWithNavigation/>
                         <Routes>
                             <Route path="/" exact element={<LoginComponentWithNavegation/>}/>
                             <Route path="/login" element={<LoginComponentWithNavegation/>}/>
@@ -32,17 +33,19 @@ class TodoApp extends Component{
 
 class HeaderComponent extends Component{
     render(){
+        const isUserLoggedIn = AuthenticationService.isUserLoggedIn()
+        //console.log(isUserLoggedIn)
         return(
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
                     <div><a href="https://courses.in28minutes.com/" className="navbar-brand">in28minutes</a></div>
                     <ul className="navbar-nav">
-                        <li><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>
-                        <li><Link className="nav-link" to="/todos">Todos</Link></li>
+                        {isUserLoggedIn && <li><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>}
+                        {isUserLoggedIn && <li><Link className="nav-link" to="/todos">Todos</Link></li>}
                     </ul>
                     <ul className="navbar-nav navbar-collapse justify-content-end">
-                        <li><Link className="nav-link" to="/login">Login</Link></li>
-                        <li><Link className="nav-link" to="/logout" onClick={AuthenticationService.logout}>Logout</Link></li>
+                        {!isUserLoggedIn && <li><Link className="nav-link" to="/login">Login</Link></li>}
+                        {isUserLoggedIn && <li><Link className="nav-link" to="/logout" onClick={AuthenticationService.logout}>Logout</Link></li>}
                     </ul>
                 </nav>
             </header>
@@ -108,7 +111,7 @@ class ListTodosComponent extends Component{
                             {
                                 this.state.todos.map (
                                     todo => 
-                                    <tr>
+                                    <tr key={todo.id}>
                                         <td>{todo.description}</td>
                                         <td>{todo.done.toString()}</td>
                                         <td>{todo.targetDate.toString()}</td>
