@@ -16,6 +16,7 @@ class TodoApp extends Component{
                             <Route path="/login" element={<LoginComponentWithNavegation/>}/>
                             <Route path="/welcome/:name" element={<WelcomeComponentWithParams/>}/>
                             <Route path="/todos" element={<ListTodosComponent/>}/>
+                            <Route path="/logout" element={<LogoutComponent/>}/>
                             <Route path="*" element={<ErrorComponent/>}/>
                         </Routes>
                     <FooterComponent/>
@@ -33,7 +34,7 @@ class HeaderComponent extends Component{
         return(
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <div><a href="http://www.in28minutes.com" className="navbar-brand">in28minutes</a></div>
+                    <div><a href="https://courses.in28minutes.com/" className="navbar-brand">in28minutes</a></div>
                     <ul className="navbar-nav">
                         <li><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>
                         <li><Link className="nav-link" to="/todos">Todos</Link></li>
@@ -51,9 +52,22 @@ class HeaderComponent extends Component{
 class FooterComponent extends Component{
     render(){
         return(
-            <div>
-                <hr/>Footer
-            </div>
+            <footer className="footer">
+                <span className="text-muted">All Rights Reserve 2018 @in28minutes</span>
+            </footer>
+        )
+    }
+}
+
+class LogoutComponent extends Component{
+    render(){
+        return(
+            <>
+                <h1>You are Logout</h1>
+                <div className="container">
+                    Thank you for using our Application
+                </div>
+            </>
         )
     }
 }
