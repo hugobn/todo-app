@@ -30,28 +30,9 @@ class TodoApp extends Component{
                         </Routes>
                     <FooterComponent/>
                 </Router>
-
-                {/*<LoginComponent/>
-                <WelcomeComponent/>*/}
             </div>
         )
     }
 }
-
-/*
-function ShowInvalidCredentials(props){
-    if(props.hasLoginFailed){
-        return <div>Invalid Credentials</div>
-    }
-    return null
-}
-
-function ShowLoginSucessMessage(props){
-    if(props.showSucessMessage){
-        return <div>Login Sucessful</div>
-    }
-    return null
-}
-*/
 
 export default TodoApp
