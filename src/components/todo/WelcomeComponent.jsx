@@ -1,5 +1,6 @@
-import { Component } from "react";
-import{Link} from 'react-router-dom'
+import React, { Component } from "react";
+import {Link} from 'react-router-dom'
+import HelloWorldService from "../../api/todo/HelloWorldService.js";
 
 class WelcomeComponent extends Component{
     constructor(props){
@@ -24,7 +25,9 @@ class WelcomeComponent extends Component{
     }
 
     retrieveWelcomeMessage(){
-        console.log("Retrieve Welcome Message")
+        HelloWorldService.executeHelloWorldService()
+        .then(response => console.log('response'))
+        //.catch()
     }
 }
 
