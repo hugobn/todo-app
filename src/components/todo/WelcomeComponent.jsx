@@ -42,7 +42,7 @@ class WelcomeComponent extends Component{
 
         HelloWorldService.executeHelloWorldPathVariableService(this.props.params.name)
         .then(response => this.handleSuccessfulResponse(response))
-        .catch(error => this.handleError(error))
+        //.catch(error => this.handleError(error))
 
     }
 
@@ -53,7 +53,7 @@ class WelcomeComponent extends Component{
 
     handleError(error){
         console.log(error.response)
-        this.setState({welcomeMessage: error.response.data.message})
+        //this.setState({welcomeMessage: error.response.data.message})
     }
 }
 
