@@ -21,7 +21,7 @@ class ListTodosComponent extends Component{
         this.deleteTodoClicked = this.deleteTodoClicked.bind(this)
         this.refreshTodos = this.refreshTodos.bind(this)
         this.updateTodoClicked = this.updateTodoClicked.bind(this)
-
+        this.addTodoClicked = this.addTodoClicked.bind(this)
     }
 
     componentWillUnmount(){
@@ -37,6 +37,9 @@ class ListTodosComponent extends Component{
     }
 
     componentDidMount(){
+        if(this.state.id === -1){
+            return
+        }
         console.log('componenDidMount')
         this.refreshTodos()
     }
@@ -86,6 +89,10 @@ class ListTodosComponent extends Component{
         )*/
     }
 
+    addTodoClicked(){
+        this.props.navigate('/todos/-1')
+    }
+
     render(){
         console.log('render')
         return(
@@ -118,6 +125,9 @@ class ListTodosComponent extends Component{
                             }
                         </tbody>
                     </table>
+                    <div className='row'>
+                            <button className='btn btn-success' onClick={this.addTodoClicked}>Add</button>
+                    </div>
                 </div>
             </div>
         )

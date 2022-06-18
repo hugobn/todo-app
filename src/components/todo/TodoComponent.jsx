@@ -47,12 +47,17 @@ class TodoComponent extends Component {
 
     onSubmit(values){
         let username = AuthenticationService.getLoggedInUserName()
-        TodoDataService.updateTodo(username, this.state.id, 
-            {
-                id: this.state.id, 
-                description: values.description, 
-                targetDate: values.targetDate
-            }).then(() => this.props.navigate(`/todos`))
+        let todo =  {
+            id: this.state.id, 
+            description: values.description, 
+            targetDate: values.targetDate
+        }
+
+        if(this.state.id === -1){
+            TodoDataService.createTodo(username, todo).then(() => this.props.navigate(`/todos`))            
+        }else {
+            TodoDataService.updateTodo(username, this.state.id, todo).then(() => this.props.navigate(`/todos`))
+        }
         console.log(values)
     }
 
