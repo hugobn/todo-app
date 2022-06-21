@@ -24,6 +24,7 @@ class LoginComponent extends Component{
 
     loginClicked(){
         //in28minutes, dummy
+    /*
         if(this.state.username==='in28minutes' && this.state.password==='dummy'){
             AuthenticationService.registerSucessfulLogin(this.state.username, this.state.password)
             this.props.navigate(`/welcome/${this.state.username}`)
@@ -34,6 +35,18 @@ class LoginComponent extends Component{
             this.setState({showSucessMessage: false})
             this.setState({hasLoginFailed: true})
         }
+    */
+        AuthenticationService.executeBasicAuthenticationService(this.state.username, this.state.password)
+        .then(() => {
+                AuthenticationService.registerSucessfulLogin(this.state.username, this.state.password)
+                this.props.navigate(`/welcome/${this.state.username}`)
+            }
+        ).catch(() => {
+                this.setState({showSucessMessage: false})
+                this.setState({hasLoginFailed: true})
+            }
+        )
+
     }
 
     render(){
