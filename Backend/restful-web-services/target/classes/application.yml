@@ -4,3 +4,8 @@ server:
 logging:
   level:
     root: debug
+spring:
+  security:
+    user:
+      name: in28minutes
+      password: dummy
