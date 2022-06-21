@@ -8,17 +8,20 @@ class HelloWorldService {
         return axios.get('http://localhost:9090/hello-world-bean')
     }
     executeHelloWorldPathVariableService(name){
+    /*  // this is already taken of the axios interceptor implemented in AuthenticationService.js file
         let username = 'in28minutes'
         let password = 'dummy'
 
         let basicAuthHeader = 'Basic ' + window.btoa(username + ':' + password)
-
-        return axios.get(`http://localhost:9090/hello-world/path-variable/${name}`,
+    */
+        return axios.get(`http://localhost:9090/hello-world/path-variable/${name}`
+        /*,
             {
                 headers: {
                     authorization: basicAuthHeader
                 }
             }
+        */
         )
     }
 }
