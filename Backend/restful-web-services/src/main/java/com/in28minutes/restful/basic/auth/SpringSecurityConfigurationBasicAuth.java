@@ -1,4 +1,4 @@
-package com.in28minutes.restful.webservices.basic.auth;
+package com.in28minutes.restful.basic.auth;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

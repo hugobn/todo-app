@@ -4,8 +4,28 @@ server:
 logging:
   level:
     root: debug
-spring:
-  security:
-    user:
-      name: in28minutes
-      password: dummy
+
+#spring:
+#  security:
+#    user:
+#      name: in28minutes
+#      password: dummy
+
+security:
+  jwt:
+    signing:
+      key:
+        secret: "mySecret"
+    get:
+      token:
+        uri: "/authenticate"
+    refresh:
+      token:
+        uri: "/refresh"
+    http:
+      request:
+        header: "Authorization"
+    toke:
+      expiration:
+        in:
+          seconds: 604800
